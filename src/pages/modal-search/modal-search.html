@@ -1,0 +1,92 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Поиск</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">
+        Закрыть
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <div class="bar bar-header bar-balanced">
+        <h1 class="title">Калькулятор</h1>
+      </div>
+    </ion-list-header>
+    <ion-item>
+      <ion-label stacked>{{ itemsEx[0] }}</ion-label>
+      <ion-input type="text" [(ngModel)]="a"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{ itemsEx[1] }}</ion-label>
+      <ion-input type="text" [(ngModel)]="b"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{ itemsEx[2] }}</ion-label>
+      <ion-input type="text" [(ngModel)]="c"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Средний балл Аттестата*100</ion-label>
+      <ion-input type="text" [(ngModel)]="d"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <button ion-button outline (click)="f()">подобрать</button>
+    <ion-list *ngIf="show == 1">
+      <ion-list-header>
+        <div class="bar bar-header bar-balanced">
+          <h5 class="title">Ваш результат: {{ score }}</h5>
+          <h3 *ngIf="calcCount()">Ничего не найдено</h3>
+        </div>
+      </ion-list-header>
+      <ion-list *ngFor="let fac of resItems">
+
+        <div *ngFor="let spec of fac.specs">
+          <ion-card  *ngIf="spec.passing_score.free <= score">
+            <ion-card-content >
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-10>
+                    {{ spec.spec_name }}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-item>
+                <span>
+                Бюджетная форма:
+                <ion-badge item-end>{{ spec.passing_score.free}}</ion-badge>
+                </span>
+                      <br>
+                      <span>
+                Платная форма:
+                <ion-badge item-end>{{ spec.passing_score.payed}}</ion-badge>
+                </span>
+
+              </ion-item>
+              <ion-item>
+                <a (click)="showDescription(spec)">Подробнее</a>
+              </ion-item>
+
+              <!-- Add card content here! -->
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-list>
+    </ion-list>
+    <ion-list *ngIf="show == 2">
+      <ion-list-header>
+        <div class="bar bar-header bar-balanced">
+          <h5 class="title">Error</h5>
+        </div>
+      </ion-list-header>
+    </ion-list>
+  </ion-grid>
+</ion-content>

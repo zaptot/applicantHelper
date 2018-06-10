@@ -1,0 +1,78 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{data.fac_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">
+        Закрыть
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        цт:
+      </ion-col>
+      <ion-col col-5>
+        <ion-row *ngFor="let ex of data.exams">
+          {{ ex }}
+        </ion-row>
+      </ion-col>
+        <ion-col col-5>
+            Бюджет:   <ion-badge item-end>{{ data.passing_score.free }}</ion-badge>
+          <br><br><br>
+            Платное:   <ion-badge item-end>{{ data.passing_score.payed }}</ion-badge>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item>
+      <ion-title>
+        Специальности:
+      </ion-title>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-card *ngFor="let spec of data.specs">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-12>
+              {{ spec.spec_name }}
+            </ion-col>
+
+            </ion-row>
+        </ion-grid>
+        <ion-item>
+          <span>
+          Бюджетная форма:
+          <ion-badge item-end>{{ spec.passing_score.free}}</ion-badge>
+          </span>
+          <br>
+          <span>
+          Платная форма:
+          <ion-badge item-end>{{ spec.passing_score.payed}}</ion-badge>
+          </span>
+        </ion-item>
+        <ion-item>
+          <a (click)="showDescription(spec)">Подробнее</a>
+        </ion-item>
+        <!-- Add card content here! -->
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

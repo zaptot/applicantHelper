@@ -1,11 +1,24 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      About
+      Калькулятор
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <div class="bar bar-header bar-balanced">
+        <h1 class="title">Выберите 3 Цт</h1>
+      </div>
+    </ion-list-header>
+    <ion-item *ngFor="let item of exams">
+      <ion-label>{{ item }}</ion-label>
+      <ion-checkbox (click)="toggleCh(item)"></ion-checkbox>
+    </ion-item>
+    <ion-grid>
+      <button ion-button outline (click)="f()">подобрать цт</button>
+    </ion-grid>
+  </ion-list>
 </ion-content>
