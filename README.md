@@ -5,6 +5,15 @@ Main features of applicantHelper:
 * View all available universities, faculties and specialties
 * Search for specialties according to the results of your exams
 * Create/Delete notes in list what to do for admission
+## Installing
+
+1. Clone the repo: `git clone https://github.com/zaptot/applicantHelper.git`
+
+2. Install with: `npm install`
+
+3. Run: `ionic lab`
+
+3. Open `http://localhost:8100/ionic-lab` in your browser
 
 ## All available universities and faculties
 
